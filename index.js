@@ -3,6 +3,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const morgan = require('morgan');
 require ('dotenv').config() //package that allows us to have file called .env. where you can specify api keys, atlas url. in rails you have .secrets file, here you have it. 
 
 //with deployment heroku won't always use port 5000. It will assign whatever port it has available. 
@@ -23,8 +24,12 @@ mongoose.connect(process.env.DB_URL, dbConfig, (err) => {
   }
 })
 
+//middleware
+app.use(morgan('dev'));
 
-//todo: connect with index.js file my directory. use middleware
+//todo: connect with index.js file my directory.
+
+
 //connect entry point index file with routes index.js
 app.use(require('./routes/index'))
 

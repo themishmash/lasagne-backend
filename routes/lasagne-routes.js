@@ -9,7 +9,8 @@ router.get('/', index)
 //   res.send('api working')
 // })
 
-router.get('/create', create)
+
+router.post('/create', express.json(), create)
 
 
 module.exports = router
